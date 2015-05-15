@@ -1,6 +1,7 @@
 package com.yiguo.daihai.work.network.ui;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.yiguo.daihai.work.R;
+import com.yiguo.daihai.work.network.adapter.ViewPagerAdapter;
 
 
 public class FragmentActivityDemo extends Activity {
@@ -22,6 +24,13 @@ public class FragmentActivityDemo extends Activity {
         setContentView(R.layout.activity_fragment_activity_demo);
         mViewPager = (ViewPager)findViewById(R.id.viewpager);
         mPagerTabStrip = (PagerTabStrip) findViewById(R.id.pagertabstrip);
+
+        mPagerTabStrip.setBackgroundColor(Color.LTGRAY);
+        mPagerTabStrip.setTabIndicatorColor(Color.RED);
+
+
+        mViewPager.setAdapter(new ViewPagerAdapter(this));
+
     }
 
 
