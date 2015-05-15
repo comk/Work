@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.yiguo.daihai.work.R;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by daihai on 2015/5/15.
  */
@@ -37,25 +39,27 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
         public ProgressBar progressBar;
         public SeekBar seekBar;
         public RadioButton radioButton;
-
+        public int viewType;
         public CustomeViewHolder(View view, int viewType){
             super(view);
-            switch (viewType){
+            switch (this.viewType = viewType){
                 case 0:
                     textView = (TextView) view;
                     textView.setText("This is "+textView.getClass().getName());
                     textView.setPadding(20, 120, 20, 120);
+                    textView.setBackgroundColor(Color.YELLOW);
                     break;
                 case 1:
                     imageVIew = (ImageView) view;
                     imageVIew.setImageResource(R.drawable.ic_launcher);
                     imageVIew.setPadding(20, 120, 20, 120);
+                    imageVIew.setBackgroundColor(Color.LTGRAY);
                     break;
                 case 2:
                     cardView = (CardView) view;
                     cardView.setRadius(20);
                     cardView.setMinimumHeight(200);
-                    cardView.setCardBackgroundColor(Color.YELLOW);
+                    cardView.setCardBackgroundColor(Color.MAGENTA);
                     TextView tv = new TextView(cardView.getContext());
                     tv.setText("This is "+cardView.getClass().getName());
                     cardView.addView(tv);
@@ -64,29 +68,37 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
                     button = (Button) view;
                     button.setPadding(20,120,20,120);
                     button.setText("This is "+button.getClass().getName());
+                    button.setBackgroundColor(Color.RED);
                     break;
                 case 4:
                     checkBox = (CheckBox) view;
                     checkBox.setPadding(20,120,20,120);
                     checkBox.setText("This is "+checkBox.getClass().getName());
+                    checkBox.setBackgroundColor(Color.BLUE);
                     break;
                 case 5:
                     ratingBar = (RatingBar) view;
+                    ratingBar.setMax(5);
                     ratingBar.setPadding(20,120,20,120);
+                    ratingBar.setBackgroundColor(Color.CYAN);
                     break;
                 case 6:
                     progressBar = (ProgressBar) view;
+                    progressBar.setMax(100);
                     progressBar.setPadding(20,120,20,120);
+                    progressBar.setBackgroundColor(Color.GREEN);
                     break;
                 case 7:
                     seekBar = (SeekBar) view;
                     seekBar.setMax(200);
                     seekBar.setPadding(20,120,20,120);
+                    seekBar.setBackgroundColor(Color.DKGRAY);
                     break;
                 case 8:
                     radioButton = (RadioButton) view;
                     radioButton.setPadding(20,120,20,120);
                     radioButton.setText("This is "+radioButton.getClass().getName());
+                    radioButton.setBackgroundColor(Color.GRAY);
                     break;
             }
         }
@@ -144,7 +156,31 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
 
     @Override
     public void onBindViewHolder(CustomeViewHolder holder, int position) {
-
+        switch (holder.viewType){
+            case 0:
+                holder.textView.setText("this is position "+position);
+                break;
+            case 1:
+                break;
+            case 2:
+                ((TextView)holder.cardView.getChildAt(0)).setText("this is position "+position);
+                break;
+            case 3:
+                holder.button.setText("this is position "+position);
+                break;
+            case 4:
+                holder.checkBox.setText("this is position "+position);
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                holder.radioButton.setText("this is position "+position);
+                break;
+        }
     }
 
     @Override

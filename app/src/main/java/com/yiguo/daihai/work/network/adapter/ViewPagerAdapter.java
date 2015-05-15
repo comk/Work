@@ -1,7 +1,6 @@
 package com.yiguo.daihai.work.network.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.ContentLoadingProgressBar;
@@ -9,6 +8,7 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -108,13 +108,17 @@ public class ViewPagerAdapter extends PagerAdapter {
                 instantiateItem = new RecyclerView(context);
 
                 RecyclerView recyclerView = (RecyclerView) instantiateItem;
+                //线性布局管理
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
                 linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                recyclerView.setLayoutManager(linearLayoutManager);
+                //瀑布布局管理
+                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+                //修改布局管理
+                recyclerView.setLayoutManager(staggeredGridLayoutManager);
 
                 recyclerView.setAdapter(new RecyclerAdapter(context));
 
-
+                recyclerView.setItemViewCacheSize(2);
                 break;
         }
         container.addView(instantiateItem);
