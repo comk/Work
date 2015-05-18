@@ -2,20 +2,34 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yiguo.daihai.work" >
 
+    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="17"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <!-- 将Activity设置到其他进程可以避免一个Activity抛异常引起整个App抛异常  ！！！ -->
         <activity
-            android:name=".network.ui.FragmentActivityDemo"
+            android:name=".network.ui.ViewPagerDemo"
+            android:process="com.sina.weibo"
             android:label="@string/title_activity_fragment_activity_demo" >
+        </activity>
+        <activity
+            android:name=".network.ui.MainActivity"
+            android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".network.ui.DrawerLayoutActivity"
+            android:process=":pager"
+            android:label="@string/title_activity_drawer_layout" >
+        </activity>
+        <activity android:name=".network.ui.ProductDetail" />
     </application>
 
 </manifest>

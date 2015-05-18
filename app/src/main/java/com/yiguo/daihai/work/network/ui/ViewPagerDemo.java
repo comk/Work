@@ -7,12 +7,14 @@ import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ScrollView;
 
 import com.yiguo.daihai.work.R;
 import com.yiguo.daihai.work.network.adapter.ViewPagerAdapter;
+import com.yiguo.daihai.work.network.exception.CustomException;
 
 
-public class FragmentActivityDemo extends Activity {
+public class ViewPagerDemo extends Activity {
 
     ViewPager mViewPager;
 
@@ -21,6 +23,7 @@ public class FragmentActivityDemo extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Thread.setDefaultUncaughtExceptionHandler(new CustomException(this));
         setContentView(R.layout.activity_fragment_activity_demo);
         mViewPager = (ViewPager)findViewById(R.id.viewpager);
         mPagerTabStrip = (PagerTabStrip) findViewById(R.id.pagertabstrip);
@@ -31,6 +34,8 @@ public class FragmentActivityDemo extends Activity {
 
         mViewPager.setAdapter(new ViewPagerAdapter(this));
 
+
+        ScrollView sv;
     }
 
 
@@ -42,6 +47,11 @@ public class FragmentActivityDemo extends Activity {
     }
 
     @Override
+    public void finish() {
+        super.finish();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -50,6 +60,8 @@ public class FragmentActivityDemo extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            String a = null;
+            a.length();
             return true;
         }
 

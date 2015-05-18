@@ -76,8 +76,8 @@ public class ViewPagerAdapter extends PagerAdapter {
                 ListView lv = new ListView(context);
                 lv.setLayoutParams(layoutParams);
                 lv.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, titles));
+                lv.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
                 swipeRefreshLayout.addView(lv);
-                //加载颜色是循环播放的，只要没有完成刷新就会一直循环，color1>color2>color3>color4
                 swipeRefreshLayout.setColorSchemeColors(android.R.color.white,
                         android.R.color.holo_green_light,
                         android.R.color.holo_orange_light, android.R.color.holo_red_light);
@@ -108,12 +108,9 @@ public class ViewPagerAdapter extends PagerAdapter {
                 instantiateItem = new RecyclerView(context);
 
                 RecyclerView recyclerView = (RecyclerView) instantiateItem;
-                //线性布局管理
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
                 linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                //瀑布布局管理
                 StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
-                //修改布局管理
                 recyclerView.setLayoutManager(staggeredGridLayoutManager);
 
                 recyclerView.setAdapter(new RecyclerAdapter(context));
