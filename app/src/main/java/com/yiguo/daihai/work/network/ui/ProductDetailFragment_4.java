@@ -14,18 +14,14 @@ import com.yiguo.daihai.work.network.view.BounceScrollView;
 /**
  * Created by daihai on 2015/5/18.
  */
-public class ProductDetailFragment_1 extends Fragment {
+public class ProductDetailFragment_4 extends Fragment {
 
     private BounceScrollView bounceScrollView;
 
     private BounceScrollView.OnScrollListener onScrollListener;
 
-    public ProductDetailFragment_1() {
+    public ProductDetailFragment_4() {
 
-    }
-
-    public ProductDetailFragment_1(BounceScrollView.OnScrollListener scrollListener) {
-        this.onScrollListener = scrollListener;
     }
 
     @Override
@@ -36,11 +32,7 @@ public class ProductDetailFragment_1 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = ViewGroup.inflate(getActivity(), R.layout.product_detail_fragment_1,null);
-        bounceScrollView = (BounceScrollView) view.findViewById(R.id.sv_detail);
-        bounceScrollView.setOnScrollListener(onScrollListener);
-//        bounceScrollView.setTv_top((TextView) view.findViewById(R.id.toprefreshview));
-        bounceScrollView.setTv_bottom((TextView) view.findViewById(R.id.bottomrefreshview));
+        View view = ViewGroup.inflate(getActivity(), R.layout.product_detail_fragment_4,null);
         return view;
     }
 

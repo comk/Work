@@ -5,15 +5,60 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_drawer_layout">DrawerLayoutActivity</string>
-    <string name="long_text">something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n
-    something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n
-        something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n
-        something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n
-        something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n
-        something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n
-        something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n
-        something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n
-        something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n something so much long text \n
+    <string name="long_text">
+        something so much long text Head \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text \n  short text here \n
+        something so much long text Tail \n  short text here \n
     </string>
 
 
