@@ -84,5 +84,6 @@
         <item >Item 19</item>
         <item >Item 20</item>
     </array>
+    <string name="title_activity_share">ShareActivity</string>
 
 </resources>

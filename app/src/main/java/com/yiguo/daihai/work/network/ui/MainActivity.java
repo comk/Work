@@ -29,6 +29,7 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
         data.add("ViewPager with mPagerTabStrip");
         data.add("DrawerLayout");
         data.add("Yiguo Product Detail");
+        data.add("Share Aniamtion");
         listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data));
 
         listView.setOnItemClickListener(this);
@@ -75,7 +76,9 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
             case 2:
                 startActivity(new Intent(this,ProductDetail.class));
                 break;
-            case 3:break;
+            case 3:
+                startActivity(new Intent(this,ShareActivity.class));
+                break;
             case 4:break;
             case 5:break;
             case 6:break;
