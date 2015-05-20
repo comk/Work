@@ -23,6 +23,8 @@ public class DragView extends FrameLayout {
 
     OnPullListener onPullListener;
 
+    boolean blockTouchEvent = false;
+
     View headerView;
 
     View footerView;
@@ -75,7 +77,8 @@ public class DragView extends FrameLayout {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         mHelper.processTouchEvent(ev);
-        mContentView.onTouchEvent(ev);
+        if(!blockTouchEvent)
+            mContentView.onTouchEvent(ev);
         return true;
     }
 
@@ -138,13 +141,40 @@ public class DragView extends FrameLayout {
                 }
                 return MAX_DRAG_DISTANCE * (top/Math.abs(top));
             }else{
-                if(top >= 0 && mContentView.canPullDown()){
+
+                if(top > 0 && mContentView.canPullUp()){
                     return 0;
-                }else if(top <=0 && mContentView.canPullUp()){
+                }else if(top < 0 && mContentView.canPullDown()){
                     return 0;
-                }else{
-                    return top;
+                }else {
+                    if (top != 0) {
+                        blockTouchEvent = true;
+                        if (Math.abs(top) <= MAX_DRAG_DISTANCE) {
+                            return top;
+                        }
+                        return MAX_DRAG_DISTANCE * (top / Math.abs(top));
+                    } else {
+                        blockTouchEvent = false;
+                        return 0;
+                    }
                 }
+
+
+//                if(!mContentView.canPullUp() && top < 0){
+//                    blockTouchEvent = true;
+//                    if(Math.abs(top) <= MAX_DRAG_DISTANCE) {
+//                        return top;
+//                    }
+//                    return MAX_DRAG_DISTANCE * (top/Math.abs(top));
+//                }else if(!mContentView.canPullDown() && top > 0){
+//                    blockTouchEvent = true;
+//                    if(Math.abs(top) <= MAX_DRAG_DISTANCE) {
+//                        return top;
+//                    }
+//                    return MAX_DRAG_DISTANCE * (top/Math.abs(top));
+//                }
+//                blockTouchEvent = false;
+//                return 0;
             }
         }
 

@@ -37,6 +37,7 @@ public class RebouncdView extends ScrollView implements IPullable{
         return false;
     }
 
+
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         return super.onTouchEvent(ev);
