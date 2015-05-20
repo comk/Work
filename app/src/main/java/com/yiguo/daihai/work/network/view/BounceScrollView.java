@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -26,11 +27,11 @@ public class BounceScrollView extends ScrollView {
     private TextView tv_bottom;
 
     public BounceScrollView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public BounceScrollView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public BounceScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -63,6 +64,7 @@ public class BounceScrollView extends ScrollView {
 
     @Override
     protected void onFinishInflate() {
+
         super.onFinishInflate();
     }
 
@@ -85,8 +87,18 @@ public class BounceScrollView extends ScrollView {
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
     }
 
     @Override

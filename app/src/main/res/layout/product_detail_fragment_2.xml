@@ -2,6 +2,7 @@
 <com.yiguo.daihai.work.network.view.BounceScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:id="@+id/sv_webview"
+    android:layout_marginTop="-30dp"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"

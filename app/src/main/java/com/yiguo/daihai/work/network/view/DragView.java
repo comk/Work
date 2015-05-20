@@ -9,7 +9,6 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ScrollView;
 
 import com.yiguo.daihai.work.R;
 
@@ -20,7 +19,13 @@ public class DragView extends FrameLayout {
 
     public static final int MAX_DRAG_DISTANCE = 200;
 
-    View mContentView;
+    RebouncdView mContentView;
+
+    OnPullListener onPullListener;
+
+    View headerView;
+
+    View footerView;
 
     ViewDragHelper mHelper;
 
@@ -42,11 +47,21 @@ public class DragView extends FrameLayout {
                 mViewDragHelperCallback);
     }
 
+    public OnPullListener getOnPullListener() {
+        return onPullListener;
+    }
+
+    public void setOnPullListener(OnPullListener onPullListener) {
+        this.onPullListener = onPullListener;
+    }
+
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
         //get mContentView from xml layout file
-        mContentView = findViewById(R.id.content);
+        mContentView = (RebouncdView) findViewById(R.id.content);
+        headerView = findViewById(R.id.header);
+        footerView = findViewById(R.id.footer);
     }
 
     class YScrollDetector extends GestureDetector.SimpleOnGestureListener {
@@ -58,23 +73,19 @@ public class DragView extends FrameLayout {
     }
 
     @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        mHelper.shouldInterceptTouchEvent(ev);
-        if (ev.getAction() == MotionEvent.ACTION_DOWN
-                || ev.getAction() == MotionEvent.ACTION_UP) {
-            mHelper.processTouchEvent(ev);
-        }
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        mHelper.processTouchEvent(ev);
         mContentView.onTouchEvent(ev);
-        return mGestureDetector.onTouchEvent(ev) && ((RebouncdView)mContentView).isOverScroll();
-//        return true;
+        return true;
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return true;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        try {
-            mHelper.processTouchEvent(ev);
-        } catch (Exception ex) {
-        }
         return true;
     }
 
@@ -98,21 +109,43 @@ public class DragView extends FrameLayout {
 
         @Override
         public boolean tryCaptureView(View arg0, int arg1) {
-            return arg0 == mContentView && ((RebouncdView)mContentView).isOverScroll();
+            return arg0 == mContentView;
         }
 
         @Override
         public void onViewPositionChanged(View changedView, int left, int top,
                                           int dx, int dy) {
-
+            headerView.layout(0, mContentView.getTop() - headerView.getHeight(), headerView.getWidth(), mContentView.getTop());
+            footerView.layout(0, mContentView.getBottom(), footerView.getWidth(), mContentView.getBottom() + footerView.getHeight());
         }
 
         @Override
         public int clampViewPositionVertical(View child, int top, int dy) {
-            if(Math.abs(top) <= MAX_DRAG_DISTANCE) {
-                return top;
+            if(top <= 0 && mContentView.canPullUp()){
+                int distance = Math.min(Math.abs(top), MAX_DRAG_DISTANCE);
+                if(onPullListener != null && footerView != null)
+                    onPullListener.onPullUp(distance, distance/MAX_DRAG_DISTANCE, footerView);
+                if(Math.abs(top) <= MAX_DRAG_DISTANCE) {
+                    return top;
+                }
+                return MAX_DRAG_DISTANCE * (top/Math.abs(top));
+            }else if(top >= 0 && mContentView.canPullDown()){
+                int distance = Math.min(Math.abs(top), MAX_DRAG_DISTANCE);
+                if(onPullListener != null && headerView != null)
+                    onPullListener.onPullDown(distance, distance / MAX_DRAG_DISTANCE, headerView);
+                if(Math.abs(top) <= MAX_DRAG_DISTANCE) {
+                    return top;
+                }
+                return MAX_DRAG_DISTANCE * (top/Math.abs(top));
+            }else{
+                if(top >= 0 && mContentView.canPullDown()){
+                    return 0;
+                }else if(top <=0 && mContentView.canPullUp()){
+                    return 0;
+                }else{
+                    return top;
+                }
             }
-            return MAX_DRAG_DISTANCE * (top/Math.abs(top));
         }
 
         @Override
@@ -121,5 +154,27 @@ public class DragView extends FrameLayout {
         }
     };
 
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        headerView.layout(0, mContentView.getTop() - headerView.getHeight(), headerView.getWidth(), mContentView.getTop());
+        footerView.layout(0, mContentView.getBottom(), footerView.getWidth(), mContentView.getBottom() + footerView.getHeight());
+    }
+
+    public interface OnPullListener{
+        /**
+         * pull down action
+         * @param distance the distance of pull down
+         * @param percent the rate of pull down
+         */
+        public void onPullDown(int distance, float percent, View header);
+
+        /***
+         * pull up action
+         * @param distance the distance of pull up
+         * @param percent the rate of pull up
+         */
+        public void onPullUp(int distance, float percent, View footerView);
+    }
 
 }
