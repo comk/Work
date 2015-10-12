@@ -1,35 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.yiguo.daihai.work.network.view.DragView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.yiguo.daihai.work.network.view.RefreshView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:id="@+id/sv_comment"
     android:layout_height="match_parent">
-    <com.yiguo.daihai.work.network.view.RebouncdView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ScrollView
         android:id="@+id/content"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/long_text"
-            />
-    </com.yiguo.daihai.work.network.view.RebouncdView>
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:id="@+id/header"
-        android:text="========= Header ========="
-        android:layout_above="@id/content"
+        android:text="@string/long_text"
         />
-    <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-        android:gravity="center"
-        android:id="@+id/footer"
-    android:text="========= Footer ========="
-    android:layout_below="@id/content"
-    />
 
-</com.yiguo.daihai.work.network.view.DragView>
+    </ScrollView>
+</com.yiguo.daihai.work.network.view.RefreshView>

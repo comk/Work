@@ -30,6 +30,8 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
         data.add("DrawerLayout");
         data.add("Yiguo Product Detail");
         data.add("Share Aniamtion");
+        data.add("Expand Lab");
+        data.add("Logo View Animation");
         listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data));
 
         listView.setOnItemClickListener(this);
@@ -79,8 +81,12 @@ public class MainActivity extends ActionBarActivity implements ListView.OnItemCl
             case 3:
                 startActivity(new Intent(this,ShareActivity.class));
                 break;
-            case 4:break;
-            case 5:break;
+            case 4:
+                startActivity(new Intent(this,UIPublishComment.class));
+                break;
+            case 5:
+                startActivity(new Intent(this,LogoAnimationActivity.class));
+                break;
             case 6:break;
             case 7:break;
             case 8:break;

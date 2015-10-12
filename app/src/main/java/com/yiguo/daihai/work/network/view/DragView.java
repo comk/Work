@@ -61,9 +61,9 @@ public class DragView extends FrameLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         //get mContentView from xml layout file
-        mContentView = (RebouncdView) findViewById(R.id.content);
-        headerView = findViewById(R.id.header);
-        footerView = findViewById(R.id.footer);
+//        mContentView = (RebouncdView) findViewById(R.id.content);
+//        headerView = findViewById(R.id.header);
+//        footerView = findViewById(R.id.footer);
     }
 
     class YScrollDetector extends GestureDetector.SimpleOnGestureListener {
@@ -141,7 +141,7 @@ public class DragView extends FrameLayout {
                 }
                 return MAX_DRAG_DISTANCE * (top/Math.abs(top));
             }else{
-
+                //TODO needs to analyze from different situation
                 if(top > 0 && mContentView.canPullUp()){
                     return 0;
                 }else if(top < 0 && mContentView.canPullDown()){

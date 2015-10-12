@@ -45,6 +45,14 @@
             android:name=".network.ui.ShareActivity"
             android:label="@string/title_activity_share" >
         </activity>
+        <activity
+            android:name=".network.ui.UIPublishComment"
+            android:label="@string/title_activity_share" >
+        </activity>
+        <activity
+            android:name=".network.ui.LogoAnimationActivity"
+            android:label="@string/title_activity_share" >
+        </activity>
     </application>
 
 </manifest>
